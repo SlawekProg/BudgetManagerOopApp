@@ -41,7 +41,7 @@ class UserService
 
         session_regenerate_id();
 
-        //$_SESSION['user'] = $this->db->id();
+        $_SESSION['user'] = $this->db->id();
     }
 
     public function login(array $formData)
@@ -62,7 +62,7 @@ class UserService
         session_regenerate_id();
 
         $_SESSION['user'] = $user['id'];
-        $_SESSION['name'] = $user['username'];
+        $_SESSION['username'] = $user['username'];
     }
 
     public function logout()
