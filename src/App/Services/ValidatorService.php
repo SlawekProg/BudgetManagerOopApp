@@ -38,13 +38,10 @@ class ValidatorService
     public function validateRegister(array $formData)
     {
         $this->validator->validate($formData, [
+            'name' => ['required', 'lengthMax:16'],
             'email' => ['required', 'email'],
-            'age' => ['required', 'min:18'],
-            'country' => ['required', 'in:USA,Canada,Mexico'],
-            'socialMediaURL' => ['required', 'url'],
             'password' => ['required'],
             'confirmPassword' => ['required', 'match:password'],
-            'tos' => ['required']
         ]);
     }
 
