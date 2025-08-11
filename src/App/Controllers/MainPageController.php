@@ -6,14 +6,14 @@ namespace App\Controllers;
 
 use Framework\TemplateEngine;
 
-class AboutController
+class MainPageController
 {
     public function __construct(private TemplateEngine $view) {}
 
-    public function about()
+    public function mainPage()
     {
-        echo $this->view->render("about.php", [
-            'title' => 'About',
+        echo $this->view->render("mainPage.php", [
+            'title' => 'MainPage',
         ]);
     }
 }

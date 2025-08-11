@@ -11,7 +11,9 @@ use App\Controllers\{
     AuthController,
     TransactionController,
     ReceiptController,
-    ErrorController
+    ErrorController,
+
+    MainPageController
 };
 
 use App\Middleware\{AuthRequiredMiddleware, GuestOnlyMiddleware};
@@ -20,6 +22,8 @@ use App\Middleware\{AuthRequiredMiddleware, GuestOnlyMiddleware};
 //przekazując lokalizacje i tablice z nazwą klasy i metody 
 function registerRoutes($app)
 {
+    $app->get('/mainPage', [MainPageController::class, 'mainPage'])->add(GuestOnlyMiddleware::class);
+
     $app->get('/', [HomeController::class, 'home'])->add(AuthRequiredMiddleware::class);
     $app->get('/about', [AboutController::class, 'about']);
     $app->get('/register', [AuthController::class, 'registerView'])->add(GuestOnlyMiddleware::class);
