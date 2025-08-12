@@ -13,7 +13,11 @@ use App\Controllers\{
     ReceiptController,
     ErrorController,
 
-    MainPageController
+    MainPageController,
+    IncomesTransactionController,
+    ExpensesTransactionController,
+    BalanceController,
+    SettingsController
 };
 
 use App\Middleware\{AuthRequiredMiddleware, GuestOnlyMiddleware};
@@ -31,11 +35,21 @@ function registerRoutes($app)
     $app->get('/login', [AuthController::class, 'loginView'])->add(GuestOnlyMiddleware::class);
     $app->post('/login', [AuthController::class, 'login'])->add(GuestOnlyMiddleware::class);
     $app->get('/logout', [AuthController::class, 'logout'])->add(AuthRequiredMiddleware::class);
+
     $app->get('/transaction', [TransactionController::class, 'createView'])->add(AuthRequiredMiddleware::class);
     $app->post('/transaction', [TransactionController::class, 'create'])->add(AuthRequiredMiddleware::class);
     $app->get('/transaction/{transaction}', [TransactionController::class, 'editView'])->add(AuthRequiredMiddleware::class);
     $app->post('/transaction/{transaction}', [TransactionController::class, 'edit'])->add(AuthRequiredMiddleware::class);
     $app->delete('/transaction/{transaction}', [TransactionController::class, 'delete'])->add(AuthRequiredMiddleware::class);
+
+    $app->get('/incomes', [IncomesTransactionController::class, 'createView'])->add(AuthRequiredMiddleware::class);
+
+    $app->get('/expenses', [ExpensesTransactionController::class, 'createView'])->add(AuthRequiredMiddleware::class);
+
+    $app->get('/balance', [BalanceController::class, 'createView'])->add(AuthRequiredMiddleware::class);
+
+    $app->get('/settings', [SettingsController::class, 'createView'])->add(AuthRequiredMiddleware::class);
+
     $app->get('/transaction/{transaction}/receipt', [ReceiptController::class, 'uploadView'])->add(AuthRequiredMiddleware::class);
     $app->post('/transaction/{transaction}/receipt', [ReceiptController::class, 'upload'])->add(AuthRequiredMiddleware::class);
     $app->get('/transaction/{transaction}/receipt/{receipt}', [ReceiptController::class, 'download'])->add(AuthRequiredMiddleware::class);
