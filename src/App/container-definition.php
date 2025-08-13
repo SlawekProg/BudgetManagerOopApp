@@ -9,7 +9,8 @@ use App\Services\{
     UserService,
     TransactionService,
     ReceiptService,
-    ExpenseService
+    ExpenseService,
+    IncomeService
 };
 
 return [
@@ -35,6 +36,12 @@ return [
         $db = $container->get(Database::class);
 
         return new ExpenseService($db);
+    },
+
+    IncomeService::class => function (Container $container) {
+        $db = $container->get(Database::class);
+
+        return new IncomeService($db);
     },
 
     ReceiptService::class => function (Container $container) {

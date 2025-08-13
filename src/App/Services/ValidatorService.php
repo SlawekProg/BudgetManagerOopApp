@@ -75,4 +75,14 @@ class ValidatorService
             'description' => ['required', 'lengthMax:160']
         ]);
     }
+
+    public function validateIncome(array $formData)
+    {
+        $this->validator->validate($formData, [
+            'amount' => ['required', 'numeric'],
+            'date' => ['required', 'dateFormat:Y-m-d'],
+            'income_type' => ['selectRule'],
+            'description' => ['required', 'lengthMax:160']
+        ]);
+    }
 }
