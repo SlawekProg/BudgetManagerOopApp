@@ -1,60 +1,51 @@
 window.addEventListener('resize', drawCharts);
-google.charts.load('current', {'packages':['corechart']});
+google.charts.load('current', { 'packages': ['corechart'] });
 google.charts.setOnLoadCallback(drawCharts);
-function drawCharts(){
-// wczytanie API
-  fetch('dane_piechart.php')
-    .then(response => response.json())
-    .then(data => {
-      if (data.error) {
-        console.error('Błąd z API:', data.error);
-        return;
-      }
 
-      
-        if (!data.incomes || data.incomes.length <= 1) {
-            data.incomes = [['Kategoria', 'Kwota'], ['Brak danych', 1]];
-        }
+function drawCharts() {
+  const data = {
+    incomes: window.incomesDataFromPHP,
+    expenses: window.expensesDataFromPHP
+  };
 
-        if (!data.expenses || data.expenses.length <= 1) {
-            data.expenses = [['Kategoria', 'Kwota'], ['Brak danych', 1]];
-        }
+  if (!data.incomes || data.incomes.length <= 1) {
+    data.incomes = [['Kategoria', 'Kwota'], ['Brak danych', 1]];
+  }
 
-        // Teraz możemy tworzyć DataTable
-        const incomesData = google.visualization.arrayToDataTable(data.incomes);
-        const expensesData = google.visualization.arrayToDataTable(data.expenses);
-//piechart incomes
-      //const incomesData = google.visualization.arrayToDataTable(data.incomes);
-      var incomesOptions = {
-        title: 'Przychody',
-        height: 300,
-        pieSliceText: 'value', 
-        is3D: true,
-        backgroundColor:"rgb(238, 229, 188)",
-      };
-      const incomesChart = new google.visualization.PieChart(document.getElementById('incomesPiechart'));
-      incomesChart.draw(incomesData, incomesOptions);
-//piechart expenses
-      //const expensesData = google.visualization.arrayToDataTable(data.expenses);
-      var expensesOptions = {
-        title: 'Przychody',
-        height: 300,
-        pieSliceText: 'value', 
-        is3D: true,
-        backgroundColor:"rgb(238, 229, 188)",
-      };
-      const expensesChart = new google.visualization.PieChart(document.getElementById('expensesPiechart'));
-      expensesChart.draw(expensesData, expensesOptions);
-    })
-    .catch(error => console.error('Błąd pobierania danych:', error));
+  if (!data.expenses || data.expenses.length <= 1) {
+    data.expenses = [['Kategoria', 'Kwota'], ['Brak danych', 1]];
+  }
 
+  const incomesData = google.visualization.arrayToDataTable(data.incomes);
+  const expensesData = google.visualization.arrayToDataTable(data.expenses);
 
+  var incomesOptions = {
+    title: 'Przychody',
+    height: 300,
+    pieSliceText: 'value',
+    is3D: true,
+    backgroundColor: "rgb(238, 229, 188)",
+  };
+  const incomesChart = new google.visualization.PieChart(document.getElementById('incomesPiechart'));
+  incomesChart.draw(incomesData, incomesOptions);
 
+  var expensesOptions = {
+    title: 'Wydatki',
+    height: 300,
+    pieSliceText: 'value',
+    is3D: true,
+    backgroundColor: "rgb(238, 229, 188)",
+  };
+  const expensesChart = new google.visualization.PieChart(document.getElementById('expensesPiechart'));
+  expensesChart.draw(expensesData, expensesOptions);
 }
 
+// reszta Twojego index.js (Chart.js, toggleList, itp.) pozostaje bez zmian
+
+
 window.theme = {
-    primary: '#007bff' // kolor główny wykresu
-  };
+  primary: '#007bff' // kolor główny wykresu
+};
 
 new Chart(document.getElementById("chartjs-line"), {
   type: "line",
@@ -76,8 +67,8 @@ new Chart(document.getElementById("chartjs-line"), {
     }]
   },
   options: {
-      responsive: true,
-      maintainAspectRatio: false,
+    responsive: true,
+    maintainAspectRatio: false,
     scales: {
       x: {
         reverse: true,
@@ -95,15 +86,17 @@ new Chart(document.getElementById("chartjs-line"), {
     }
   }
 });
-  function toggleList() {
-    const lista = document.getElementById("listaDanych");
-    lista.classList.toggle("pokazana");
-  }
-  function toggleList2() {
-    const lista = document.getElementById("listaDanych2");
-    lista.classList.toggle("pokazana");
-  }
-  function toggleList3() {
-    const lista = document.getElementById("listaDanych3");
-    lista.classList.toggle("pokazana");
-  }
+
+
+function toggleList() {
+  const lista = document.getElementById("listaDanych");
+  lista.classList.toggle("pokazana");
+}
+function toggleList2() {
+  const lista = document.getElementById("listaDanych2");
+  lista.classList.toggle("pokazana");
+}
+function toggleList3() {
+  const lista = document.getElementById("listaDanych3");
+  lista.classList.toggle("pokazana");
+}

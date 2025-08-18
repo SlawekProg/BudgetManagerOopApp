@@ -11,13 +11,11 @@ function dd(mixed $value)
     die();
 }
 
-
 //Funkcja zapobiega atakom XSS (Cross-Site Scripting), gdy wyświetlasz dane od użytkownika.
 function e(mixed $value)
 {
     return htmlspecialchars((string) $value);
 }
-
 
 //Funkcja przekierowująca na inną strone
 function redirectTo(string $path)

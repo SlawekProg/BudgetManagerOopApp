@@ -21,8 +21,9 @@ class CsrfGuardMiddleware implements MiddlewareInterface
         if ($_SESSION['token'] !== $_POST['token']) {
             redirectTo('/');
         }
-
-        unset($_SESSION['token']);
+        // Po submit w balance wraca do własnej strony ze starym tokenem który nie pasuje
+        //Działa gdy po submit jest strona startowa i ponownie wchodzisz na balance
+        // unset($_SESSION['token']);
 
         $next();
     }
