@@ -14,3 +14,6 @@
 <!-- End Main Content Area -->
 
 <?php include $this->resolve("partials/_footer.php") ?>
+</body>
+
+</html>

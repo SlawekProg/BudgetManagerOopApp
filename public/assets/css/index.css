@@ -172,6 +172,27 @@ canvas {
   color: #535252 !important;
 }
 
+#bilans select {
+  background-color: #116A7B !important;
+
+}
+
+#bilans option {
+  background-color: #116A7B !important;
+
+}
+
+.modal * {
+  background-color: #116A7B !important;
+  color: #FFF2CC !important;
+
+}
+
+.modal-bpdy * {
+  background-color: #116A7B !important;
+
+}
+
 .ukryta-lista {
   top: 100%;
   left: 50%;

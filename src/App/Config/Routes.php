@@ -46,6 +46,7 @@ function registerRoutes($app)
     $app->post('/balance', [BalanceController::class, 'createView'])->add(AuthRequiredMiddleware::class);
 
     $app->get('/settings', [SettingsController::class, 'createView'])->add(AuthRequiredMiddleware::class);
+    $app->post('/settings', [SettingsController::class, 'handleForm'])->add(AuthRequiredMiddleware::class);
 
     $app->setErrorHandler([ErrorController::class, 'notFound']);
 

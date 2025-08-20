@@ -133,3 +133,13 @@
 </main>
 
 <?php include $this->resolve("partials/_footer.php") ?>
+
+<script>
+    window.incomesDataFromPHP = <?= $incomesJsData ?>;
+    window.expensesDataFromPHP = <?= $expensesJsData ?>;
+</script>
+<script src="assets/js/charts.js"></script>
+
+</body>
+
+</html>

@@ -10,20 +10,6 @@ class ExpenseService
 {
     public function __construct(private Database $db) {}
 
-    public function getDefaultPaymentType(): array
-    {
-        return $this->db
-            ->query("SELECT id, name FROM payment_methods_default ORDER BY name ASC")
-            ->findAll();
-    }
-
-    public function getDefaultExpenseCategories(): array
-    {
-        return $this->db
-            ->query("SELECT id, name FROM expenses_category_default ORDER BY name ASC")
-            ->findAll();
-    }
-
     public function createExpense(array $formData)
     {
         $this->db->query(

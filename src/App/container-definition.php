@@ -6,6 +6,7 @@ use Framework\{TemplateEngine, Database, Container};
 use App\Config\Paths;
 use App\Services\{
     BalanceService,
+    CategoryService,
     ValidatorService,
     UserService,
     TransactionService,
@@ -55,5 +56,11 @@ return [
         $db = $container->get(Database::class);
 
         return new ReceiptService($db);
+    },
+
+    CategoryService::class => function (Container $container) {
+        $db = $container->get(Database::class);
+
+        return new CategoryService($db);
     }
 ];

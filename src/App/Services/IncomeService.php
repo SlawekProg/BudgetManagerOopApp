@@ -10,13 +10,6 @@ class IncomeService
 {
     public function __construct(private Database $db) {}
 
-    public function getDefaultIncomeCategories(): array
-    {
-        return $this->db
-            ->query("SELECT id, name FROM incomes_category_default ORDER BY name ASC")
-            ->findAll();
-    }
-
     public function createIncome(array $formData)
     {
         $this->db->query(

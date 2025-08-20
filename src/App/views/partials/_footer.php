@@ -42,11 +42,3 @@
     crossorigin="anonymous"></script>
 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-<script>
-    window.incomesDataFromPHP = <?= $incomesJsData ?>;
-    window.expensesDataFromPHP = <?= $expensesJsData ?>;
-</script>
-<script src="/assets/js/index.js"></script>
-</body>
-
-</html>

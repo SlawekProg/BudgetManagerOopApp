@@ -6,7 +6,11 @@ namespace App\Controllers;
 
 use Framework\TemplateEngine;
 
-use App\Services\{ValidatorService, ExpenseService};
+use App\Services\{
+    ValidatorService,
+    ExpenseService,
+    CategoryService
+};
 
 
 
@@ -15,13 +19,19 @@ class ExpensesTransactionController
     public function __construct(
         private TemplateEngine $view,
         private ValidatorService $validatorService,
-        private ExpenseService $expenseService
+        private ExpenseService $expenseService,
+        private CategoryService $categoryService
     ) {}
 
     public function createView()
     {
-        $payments = $this->expenseService->getDefaultPaymentType();
-        $categories = $this->expenseService->getDefaultExpenseCategories();
+        $defaultPayments = $this->categoryService->getDefaultPaymentsCategory();
+        $userPayments = $this->categoryService->getUserPaymentsCategories();
+        $payments = array_merge($userPayments, $defaultPayments);
+
+        $defaultCategories = $this->categoryService->getDefaultExpensesCategories();
+        $userCategories = $this->categoryService->getUserExpensesCategories();
+        $categories = array_merge($userCategories, $defaultCategories);
 
         echo $this->view->render("expenses/createExpense.php", [
             'categories' => $categories,
