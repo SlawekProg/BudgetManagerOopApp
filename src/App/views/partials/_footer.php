@@ -32,10 +32,12 @@
                 <a href="#" class="nav-link px-2 text-light">Website</a>
             </li>
         </ul>
-        <p class="text-center text-light">© Sławomir Banaś</p>
+        <div class="d-flex justify-content-center">
+            <p class="text-center text-light me-3">© Sławomir Banaś</p>
+            <a href="about" class="nav-link px-2 text-light ms-3">About App</a>
+        </div>
     </div>
 </footer>
-
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe"

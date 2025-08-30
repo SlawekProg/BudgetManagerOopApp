@@ -7,7 +7,8 @@ namespace App\Controllers;
 use Framework\TemplateEngine;
 use App\Services\{
     ValidatorService,
-    UserService
+    UserService,
+    CategoryService
 };
 
 class AuthController
@@ -15,7 +16,8 @@ class AuthController
     public function __construct(
         private TemplateEngine $view,
         private ValidatorService $validatorService,
-        private UserService $userService
+        private UserService $userService,
+        private CategoryService $categoryService
     ) {}
 
     public function registerView()
@@ -31,7 +33,9 @@ class AuthController
 
         $this->userService->create($_POST);
 
-        redirectTo('/login');
+        $this->categoryService->loadDefaultCategoryToUserCategory();
+
+        redirectTo('/');
     }
 
     public function loginView()

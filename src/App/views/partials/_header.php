@@ -17,7 +17,7 @@
     <header class="pb-4">
         <nav class="navbar navbar-expand-lg navbar-light fixed-top mask-custom shadow-0">
             <div class="container">
-                <a class="navbar-brand apbud" href="/mainPage">
+                <a class="navbar-brand apbud" href="/">
                     <span style="color: #5e9693;">Aplikacja</span>
                     <span style="color: #fff;"> Budżetowa</span>
                 </a>

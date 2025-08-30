@@ -238,4 +238,45 @@ class CategoryService
             );
         }
     }
+
+    public function loadDefaultCategoryToUserCategory()
+    {
+        $defaultPaymentsCategory = $this->getDefaultPaymentsCategory();
+
+        foreach ($defaultPaymentsCategory as $category) {
+            $this->db->query(
+                "INSERT INTO payment_methods_assigned_to_users (user_id, name)
+         VALUES (:user_id, :name)",
+                [
+                    'user_id' => $_SESSION['user'],
+                    'name'    => $category['name']
+                ]
+            );
+        }
+        $defaultIncomesCategory = $this->getDefaultIncomesCategories();
+
+        foreach ($defaultIncomesCategory as $category) {
+            $this->db->query(
+                "INSERT INTO incomes_category_assigned_to_users (user_id, name)
+         VALUES (:user_id, :name)",
+                [
+                    'user_id' => $_SESSION['user'],
+                    'name'    => $category['name']
+                ]
+            );
+        }
+
+        $defaultExpensesCategory = $this->getDefaultExpensesCategories();
+
+        foreach ($defaultExpensesCategory as $category) {
+            $this->db->query(
+                "INSERT INTO expenses_category_assigned_to_users (user_id, name)
+         VALUES (:user_id, :name)",
+                [
+                    'user_id' => $_SESSION['user'],
+                    'name'    => $category['name']
+                ]
+            );
+        }
+    }
 }

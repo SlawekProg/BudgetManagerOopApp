@@ -12,6 +12,7 @@ class AuthRequiredMiddleware implements MiddlewareInterface
     {
         if (empty($_SESSION['user'])) {
             redirectTo('/mainPage');
+            exit;
         }
         $next();
     }

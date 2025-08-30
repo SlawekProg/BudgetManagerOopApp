@@ -12,6 +12,7 @@ class GuestOnlyMiddleware implements MiddlewareInterface
     {
         if (!empty($_SESSION['user'])) {
             redirectTo('/');
+            exit;
         }
         $next();
     }
