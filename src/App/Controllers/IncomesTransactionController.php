@@ -18,12 +18,10 @@ class IncomesTransactionController
 
     public function createView()
     {
-        $defaultCategories = $this->categoryService->getDefaultIncomesCategories();
         $userCategories = $this->categoryService->getUserIncomesCategories();
-        $categories = array_merge($userCategories, $defaultCategories);
 
         echo $this->view->render("incomes/createIncome.php", [
-            'categories' => $categories
+            'categories' => $userCategories
         ]);
     }
 

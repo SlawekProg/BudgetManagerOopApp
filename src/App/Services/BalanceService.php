@@ -14,17 +14,19 @@ class BalanceService
     {
         return $this->db->query(
             "SELECT
-                icd.name AS category,
-                i.amount,
-                i.date_of_income,
-                i.income_comment
-            FROM incomes AS i
-            INNER JOIN incomes_category_default AS icd ON icd.id = i.income_category_assigned_to_user_id
-            WHERE i.user_id = :user_id AND i.date_of_income BETWEEN :startDate AND :endDate",
+            icu.name AS category,
+            i.amount,
+            i.date_of_income,
+            i.income_comment
+        FROM incomes AS i
+        INNER JOIN incomes_category_assigned_to_users AS icu 
+            ON icu.id = i.income_category_assigned_to_user_id
+        WHERE i.user_id = :user_id
+            AND i.date_of_income BETWEEN :startDate AND :endDate",
             [
                 'user_id' => $_SESSION['user'],
                 'startDate' => $start,
-                'endDate' =>  $end
+                'endDate' => $end
             ]
         )->findAll();
     }
@@ -38,7 +40,7 @@ class BalanceService
             e.date_of_expense,
             e.expense_comment
         FROM expenses AS e
-        INNER JOIN expenses_category_default AS ecd 
+        INNER JOIN expenses_category_assigned_to_users AS ecd 
             ON ecd.id = e.expense_category_assigned_to_user_id
         WHERE e.user_id = :user_id 
           AND e.date_of_expense BETWEEN :startDate AND :endDate",
@@ -84,7 +86,7 @@ class BalanceService
                 icd.name AS category,
                 SUM(i.amount) AS total_amount
             FROM incomes AS i
-            INNER JOIN incomes_category_default AS icd ON icd.id = i.income_category_assigned_to_user_id
+            INNER JOIN incomes_category_assigned_to_users AS icd ON icd.id = i.income_category_assigned_to_user_id
             WHERE 
                 i.user_id = :user_id 
                 AND i.date_of_income BETWEEN :startDate AND :endDate
@@ -105,7 +107,7 @@ class BalanceService
                 ecd.name AS category,
                 SUM(e.amount) AS total_amount
             FROM expenses AS e
-            INNER JOIN expenses_category_default AS ecd ON ecd.id = e.expense_category_assigned_to_user_id
+            INNER JOIN expenses_category_assigned_to_users AS ecd ON ecd.id = e.expense_category_assigned_to_user_id
             WHERE 
                 e.user_id = :user_id 
                 AND e.date_of_expense BETWEEN :startDate AND :endDate

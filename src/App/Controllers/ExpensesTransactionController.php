@@ -25,17 +25,13 @@ class ExpensesTransactionController
 
     public function createView()
     {
-        $defaultPayments = $this->categoryService->getDefaultPaymentsCategory();
         $userPayments = $this->categoryService->getUserPaymentsCategories();
-        $payments = array_merge($userPayments, $defaultPayments);
 
-        $defaultCategories = $this->categoryService->getDefaultExpensesCategories();
         $userCategories = $this->categoryService->getUserExpensesCategories();
-        $categories = array_merge($userCategories, $defaultCategories);
 
         echo $this->view->render("expenses/createExpense.php", [
-            'categories' => $categories,
-            'payments' => $payments
+            'categories' => $userCategories,
+            'payments' => $userPayments
         ]);
     }
 

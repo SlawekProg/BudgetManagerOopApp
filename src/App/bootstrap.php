@@ -14,7 +14,7 @@ $dotenv = Dotenv::createImmutable(Paths::ROOT);
 $dotenv->load();
 
 //Tworzymy obiekt klasy App
-$app = new App(Paths::SOURCE . "app/container-definition.php");
+$app = new App(Paths::SOURCE . "App/container-definition.php");
 
 //Rejestrujemy liste routingową
 registerRoutes($app);
