@@ -87,15 +87,8 @@ new Chart(document.getElementById("chartjs-line"), {
     }
 });
 
-function toggleList() {
-    const lista = document.getElementById("listaDanych");
+function toggleList(elementId) {
+    const lista = document.getElementById(elementId);
     lista.classList.toggle("pokazana");
 }
-function toggleList2() {
-    const lista = document.getElementById("listaDanych2");
-    lista.classList.toggle("pokazana");
-}
-function toggleList3() {
-    const lista = document.getElementById("listaDanych3");
-    lista.classList.toggle("pokazana");
-}
+

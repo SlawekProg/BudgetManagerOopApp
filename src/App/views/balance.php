@@ -44,7 +44,7 @@
                 <div class="feature col">
                     <div class="text-bg-primary fs-2 rounded position-relative" style="height: auto;">
                         <div class="d-flex justify-content-center mb-2">
-                            <button class="btn btn-light" onclick="toggleList()">Szczegóły Przychodów</button>
+                            <button class="btn btn-light" onclick="toggleList('listaDanych')">Szczegóły Przychodów</button>
                         </div>
                         <div id="listaDanych" class="ukryta-lista position-absolute">
                             <ul class="fs-6">
@@ -68,7 +68,7 @@
                 <div class="feature col">
                     <div class="text-bg-primary fs-2 rounded position-relative" style="height: auto;">
                         <div class="d-flex justify-content-center mb-2">
-                            <button class="btn btn-light" onclick="toggleList2()">Szczegóły Wydatków</button>
+                            <button class="btn btn-light" onclick="toggleList('listaDanych2')">Szczegóły Wydatków</button>
                         </div>
                         <div id="listaDanych2" class="ukryta-lista position-absolute">
                             <ul class="fs-6">
@@ -92,7 +92,7 @@
                 <div class="feature col">
                     <div class="text-bg-primary fs-2 rounded position-relative" style="height: auto;">
                         <div class="d-flex justify-content-center mb-2">
-                            <button class="btn btn-light" onclick="toggleList3()">Szczegóły Podsumowania</button>
+                            <button class="btn btn-light" onclick="toggleList('listaDanych3')">Szczegóły Podsumowania</button>
                         </div>
                         <div id="listaDanych3" class="ukryta-lista position-absolute">
                             <ul class="fs-6" style="list-style-type: none;">
